@@ -56,27 +56,28 @@ public class LinkedList {
         return start;
     }
 
-    public static Node DelAny(Node start) {
-    	System.out.println("Enter the position:");
-    	int position=sc.nextInt();
-        if (position==1) {
-               return DelBeg(start);
-            } else {
-                Node temp = start;
-                for (int i = 1; i < position - 1; i++) {
-                    if (temp != null) {
-                        temp = temp.next;
-                    }
-                }
-                if (temp != null && temp.next != null) {
-                    temp.next = temp.next.next;
-                } else {
-                    System.out.println("The position does not exist.");
+   public static Node InsAny(Node start) {
+        System.out.print("Enter position: ");
+        int position = sc.nextInt();
+        if (position == 1) {
+            return InsBeg(start);
+        } else {
+        	 Node newNode = create();
+            Node temp = start;
+            for (int i = 1; i < position - 1; i++) {
+                if (temp != null) {
+                    temp = temp.next;
                 }
             }
-        return start;
+            if (temp != null) {
+                newNode.next = temp.next;
+                temp.next = newNode;
+            } else {
+                System.out.println("The previous node is null.");
+            }
         }
-
+        return start;
+    }
     public static Node DelBeg(Node start) {
         if (start == null) {
             System.out.println("The list is empty.");
